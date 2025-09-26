@@ -1,7 +1,7 @@
 
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import App from '../Home/Home';
-import CS from '../cs/Cs'
+import App from '../component/Home/Home';
+import CS from '../component/cs/Cs'
 
 
 function MainRouter (){

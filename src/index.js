@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MainRouter  from './component/LinkRouter/MainRouter';
+import MainRouter  from './LinkRouter/MainRouter';
 //import reportWebVitals from './reportWebVitals';
 import { store } from './store/Store';
 import { Provider } from 'react-redux';
