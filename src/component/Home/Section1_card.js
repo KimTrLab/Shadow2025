@@ -13,7 +13,9 @@ function Section1Card() {
                 //// map을 사용할 때는 각 항목에 고유한 key prop을 지정해야 합니다.
                 <div id="sectioncard" key={lec.title}>
                     <div>
-                        <h2> {lec.title} </h2>
+                        <button onClick={()=>alert(lec.title)}> {lec.title} </button>
+                        {/* callback : onClick={ttt}     onClick={()=>alert(lec.title)} 
+                            즉시호출(클릭버튼 트리거 전에 동작 됨) : onClick={ttt()}   onClick={alert(lec.title)} */}
                     </div>
                     <div>
                         <p> {lec.text}
