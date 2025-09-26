@@ -5,12 +5,13 @@ function Header() {
   return (
     <div>
       <header>
-        <div class="box">
-          <div class="boxin">
+        {/* react에서는 css지정할 때 class대신 className을 써야 한다 */}
+        <div className="box">
+          <div className="boxin">
             <div><h2>Shadow_Coding</h2></div>
             <div id="header_info"> login 010 - 9407- 8767</div>
           </div>
-          <div class="boxin">
+          <div className="boxin">
             <ul>
               <li ><Link to="/" >Home</Link></li>
               <li ><Link to="/ai" >AI</Link></li>
