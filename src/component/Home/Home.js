@@ -1,4 +1,4 @@
-import './App.css';
+import './Home.css';
 import pic2 from '../../img/logo.svg';
 import Section1Card from './Section1_card';
 import Header from '../header/Header';
@@ -27,5 +27,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

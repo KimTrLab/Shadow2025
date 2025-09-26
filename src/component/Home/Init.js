@@ -28,9 +28,6 @@ function InitData() {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-
-
-
         // 초기 상태 설정
         // const initdata1 = { title: d1[0], text: d1[1] };
         // dispatch(mainActions.add(initdata1));

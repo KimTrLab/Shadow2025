@@ -1,6 +1,6 @@
 
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import App from '../index/App';
+import App from '../index/Index';
 import CS from '../cs/Cs'
 
 
