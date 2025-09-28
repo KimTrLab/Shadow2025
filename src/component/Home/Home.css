@@ -20,30 +20,3 @@ img {
   height: 300px;
 }
 
-/* Section  --------------------------------------------------- */
-#section {
-  width: 100%;
-  height: 500px;
-  background-color: rgb(241, 240, 240);
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  /* 가로 가운데 */
-  align-items: center;
-  /* 세로 가운데 */
-}
-
-#section_area {
-  /*  border: 1px solid black;*/
-  width: 1280px;
-  height: 500px;
-  color: black;
-  text-align: center;
-}
-
-#sectioncard {
-  width: 33%;
-  height: 500px;
-  float: left;
-  /*  border: 1px solid black;    */
-}

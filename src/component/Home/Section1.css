@@ -30,3 +30,7 @@
   background-color: lightgray;
   transition: all 1s;
 }
+
+h2:hover{
+  color: cadetblue;
+}

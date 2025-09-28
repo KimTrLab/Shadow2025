@@ -1,0 +1,63 @@
+.container {
+    width: 1280px;
+    background: white;
+    margin: 0 auto;
+    /* 좌우 마진 자동 */
+    color: black;
+    overflow: hidden; /* 넘치는 경우 잘라내기   이미지가 부모보다 커서 화면이 커지지 않게 방지하려고*/  
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .image-item의 정확한 width를 지정하고, 전체 줄 배치도 고정 */
+.image-item-4 {
+    width: 300px;
+    min-width: 300px;
+    /* 고정 유지  */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    /* 줄어들지 않게 */
+}
+
+.image-item-4 img {
+    width: 99%;   /* image-item이랑 사이즈가 같고, 보더가 있는 상태이므로 크기를 99%로 줄임, 화면 안 깨지게 */
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* .image-item의 정확한 width를 지정하고, 전체 줄 배치도 고정 */
+.image-item-2 {
+    width: 500px;
+    min-width: 500px;
+    /* 고정 유지  */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    /* 줄어들지 않게 */
+}
+
+.image-item-2 img {
+    width: 99%;   /* image-item이랑 사이즈가 같고, 보더가 있는 상태이므로 크기를 99%로 줄임, 화면 안 깨지게 */
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+
+.image-row.two {
+    justify-content: center;
+    /* 2개는 가운데 정렬 */
+}

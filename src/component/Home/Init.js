@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { mainActions } from '../../store/Store';
+import { mainActions } from '../../store/MainSlice';
 import axios from 'axios';
 
 //function Section1Card({ title, info }) {
@@ -9,14 +9,24 @@ function InitData() {
     // let d1 = ["java", "Java Is the Language of Possibilities Java is powering the innovation behind our digital world. Harness this potential with Java resources for student coders, hobbyists, developers, and IT leaders."]
     // let d2 = ["Oracle", "Java Is the Language of Possibilities Java is powering the innovation behind our digital world. Harness this potential with Java resources for student coders, hobbyists, developers, and IT leaders."]
     // let d3 = ["Web", "Java Is the Language of Possibilities Java is powering the innovation behind our digital world. Harness this potential with Java resources for student coders, hobbyists, developers, and IT leaders."]
-    
+
     useEffect(() => {
         dispatch(mainActions.clear());
         axios.get('http://localhost:8080/aa')
             .then(response => {
                 //   setData(response.data); // 서버에서 받은 데이터를 상태에 저장
                 const data = response.data;
-                Object.entries(data).map(([key, value]) => {
+
+                // 객체의 값만 배열로 변환
+                const valuesArray = Object.values(data);  // [1, 2, 3]
+                console.log(valuesArray)
+                // 객체의 키만 배열로 변환
+                // const keysArray = Object.keys(obj);  // ['a', 'b', 'c']
+                // 키-값 쌍을 배열로 변환
+                const entriesArray = Object.entries(data);  // [['a', 1], ['b', 2], ['c', 3]]
+                //console.log(typeof (entriesArray))
+                // Object.entries(entriesArray).map(([key, value]) => {
+                entriesArray.map(([key, value]) => {
                     // console.log(key);   // 키
                     // console.log(value); // 값
                     const initdata1 = { title: key, text: value };
