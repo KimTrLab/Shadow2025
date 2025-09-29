@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>자유게시판</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #fafafa;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 1280px;
+      background-color: #fff;
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    select, input[type="text"], button {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    /* container 내부의 table만 스타일 적용 */
+    .container table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+    .container th,
+    .container td {
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .container th {
+      background-color: #f4f4f4;
+    }
+    /* 너비 비율 */
+    .container th:nth-child(1),
+    .container td:nth-child(1) {
+      width: 5%;
+    }
+    .container th:nth-child(2) {
+      width: 65%;
+      text-align: center;
+      padding-left: 0;
+    }
+    .container td:nth-child(2) {
+      text-align: left;
+      padding-left: 10px;
+    }
+    .container th:nth-child(3),
+    .container td:nth-child(3) {
+      width: 10%;
+    }
+    .container th:nth-child(4),
+    .container td:nth-child(4) {
+      width: 5%;
+    }
+    .container th:nth-child(5),
+    .container td:nth-child(5) {
+      width: 10%;
+    }
+    .container th:nth-child(6),
+    .container td:nth-child(6) {
+      width: 5%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>자유게시판</h1>
+    <div class="search-bar">
+      <select>
+        <option value="title">제목</option>
+        <option value="author">작성자</option>
+      </select>
+      <input type="text" placeholder="검색어를 입력하세요" />
+      <button>검색</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>조회</th>
+          <th>등록일</th>
+          <th>추천</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>첫 게시글입니다</td>
+          <td>홍길동</td>
+          <td>100</td>
+          <td>2025-09-29</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>두번째 글</td>
+          <td>김철수</td>
+          <td>45</td>
+          <td>2025-09-28</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>자유롭게 글을 써보세요</td>
+          <td>이영희</td>
+          <td>78</td>
+          <td>2025-09-27</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

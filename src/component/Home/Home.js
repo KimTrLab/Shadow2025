@@ -5,7 +5,7 @@ import Header from '../header/Header';
 import './Init';
 import InitData from './Init';
 
-function App() {
+function Home() {
   console.log('app run')
   InitData()
   return (
@@ -27,4 +27,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Home;

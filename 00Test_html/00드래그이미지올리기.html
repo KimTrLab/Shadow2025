@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>이미지 미리보기 + 삭제 기능</title>
+  <style>
+    #drop-zone {
+      width: 400px;
+      height: 200px;
+      border: 3px dashed #aaa;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 200px;
+      font-size: 20px;
+      color: #666;
+      margin: 20px auto;
+      transition: background-color 0.3s ease;
+    }
+
+    #drop-zone.dragover {
+      background-color: #eef;
+      border-color: #33f;
+      color: #33f;
+    }
+
+    #preview {
+      width: 400px;
+      margin: 10px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .preview-item {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    .preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="drop-zone">여기에 이미지를 드래그&드롭하세요</div>
+  <input type="file" id="file-input" multiple accept="image/*" style="display: block; margin: 10px auto;" />
+  <div id="preview"></div>
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const preview = document.getElementById('preview');
+
+    let filesArray = [];
+
+    function renderPreview() {
+      preview.innerHTML = '';
+      filesArray.forEach((file, index) => {
+        if (!file.type.startsWith('image/')) return;   // 파일이 이미지 파일인 경우 처리
+
+        const previewItem = document.createElement('div');
+        previewItem.className = 'preview-item';
+
+        const img = document.createElement('img');
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = '×';
+        removeBtn.title = '삭제';
+        removeBtn.onclick = () => {
+          filesArray.splice(index, 1);
+          renderPreview();
+          // 필요하면 여기서 fileInput.value = '' 해도 됨.
+        };
+
+        previewItem.appendChild(img);
+        previewItem.appendChild(removeBtn);
+        preview.appendChild(previewItem);
+      });
+    }
+
+    function addFiles(newFiles) {
+      // 중복파일 체크를 하고 싶으면 추가 구현 가능
+      for (const file of newFiles) {
+        filesArray.push(file);
+      }
+      renderPreview();
+    }
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();  //브라우저의 기본 동작을 막아 주는 것. 사진 드래그 하면 사진이 출력 되니까 
+      // dropZone.classList.add('dragover');   //클래스 갑을 왜 추가해야 하지? 
+    });
+
+    dropZone.addEventListener('dragleave', (e) => {
+      // dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      // dropZone.classList.remove('dragover');
+      console.log(e.dataTransfer.files);
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        addFiles(files);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const files = e.target.files;
+      if (files.length > 0) {
+        addFiles(files);
+      }
+    });
+  </script>
+</body>
+</html>

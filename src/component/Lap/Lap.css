@@ -1,0 +1,305 @@
+.containerLap {
+    width: 1280px;
+    display: flex;
+    align-items: center;
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    justify-content: center;
+    /* 가로 중앙 정렬 */
+    gap: 12px;
+    padding: 16px;
+    background-color: #f9f9fb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    position: relative;
+    top: 100px;
+    /* 화면 위에서 100px 간격 */
+    margin-left: auto;
+    margin-right: auto;
+    /* 수평 가운데 정렬 */
+}
+
+
+.search-input {
+    width: 600px;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: 2px solid #bdd7ff;
+    /* 연한 하늘색 테두리 */
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    height: 20px;
+}
+
+.search-input:focus {
+    border-color: #6495ed;
+    /* 코닝 블루 (중간톤 연푸른색) */
+    box-shadow: 0 0 8px rgba(100, 149, 237, 0.5);
+}
+
+
+.btn {
+    width: 120px;
+    font-size: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    height: 38px;
+}
+
+.search-btn {
+    background-color: #6495ed;
+    /* 코닝 블루 */
+    color: white;
+    box-shadow: 0 4px 12px rgba(100, 149, 237, 0.3);
+}
+
+.search-btn:hover {
+    background-color: #4a7cd1;
+    /* 조금 더 진한 연파랑 */
+    box-shadow: 0 6px 16px rgba(74, 124, 209, 0.5);
+}
+
+.create-btn {
+    background-color: white;
+    color: #6495ed;
+    border: 2px solid #6495ed;
+    box-shadow: 0 2px 8px rgba(100, 149, 237, 0.15);
+}
+
+.create-btn:hover {
+    background-color: #6495ed;
+    color: white;
+    box-shadow: 0 4px 12px rgba(100, 149, 237, 0.4);
+}
+
+
+/* lap down */
+.my-lab {
+    flex-shrink: 0;
+    flex-basis: calc((1280px - 24px) * 0.5);
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 32px;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.15);
+    color: #333;
+    height: auto;
+}
+
+.my-lab h2 {
+    margin-top: 0;
+    color: gray;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.recommended-lab1 {
+    flex-shrink: 0;
+    flex-basis: calc((1280px - 24px) * 0.1);
+    background: white;
+    border-radius: 16px;
+    padding: 24px 32px;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.1);
+    color: black;
+    height: auto;
+
+}
+.recommended-lab2 {
+    flex-shrink: 0;
+    flex-basis: calc((1280px - 24px) * 0.25);
+    background: white;
+    border-radius: 16px;
+    padding: 24px 32px;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.1);
+    color: #555;
+    height: auto;
+}
+
+.recommended-lab h2 {
+    margin-top: 0;
+    color: black;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.my-lab p,
+.recommended-lab p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+
+
+
+.my-lab .lab-header {
+    display: flex;
+    /* align-items: flex-end;*/
+    align-items: flex-start;
+    /* 아래에서 위쪽 정렬로 변경 */
+    /* 아이콘과 텍스트 아래 정렬 */
+    gap: 16px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.lab-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(100, 149, 237, 0.3);
+    background-color: #e3ecff;
+}
+
+.my-lab .lab-header h2 {
+    margin: 0;
+}
+
+
+.lab-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: black;
+    margin-top: 0px;
+}
+
+
+.lab-table tbody td {
+    border: 1px none;
+    /* 경계선 제거 */
+}
+
+.lab-table tbody td:first-child {
+    text-align: left;
+}
+
+.lab-table tbody td:last-child {
+    text-align: right;
+}
+
+.lab-table tbody tr:hover {
+    background-color: #f0f5ff;
+}
+
+/* 작성자와 날짜 사이 간격 */
+.author-date {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    /* 오른쪽 정렬 유지 */
+    font-weight: 500;
+    color: #5b7bbf;
+}
+
+.author-date .author {
+    /* 따로 스타일 더 줄 수 있음 */
+}
+
+.author-date .date {
+    /* 따로 스타일 더 줄 수 있음 */
+}
+
+.participating-labs {
+    width: 150px;
+    /* 부모 너비에 맞춤 */
+    background-color: white;
+    border: 1px solid black;
+    /* 검은색 테두리 */
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: black;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.participating-labs h4 {
+    margin-top: 0;
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+
+.lab-header {
+    display: flex;
+    align-items: flex-end;
+    /* 기존 아래 정렬 */
+    margin-bottom: 16px;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* 하트 버튼 스타일 */
+.heart-btn {
+    margin-left: auto;
+    /* 제목 오른쪽 끝으로 밀기 */
+    background: none;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    color: #bbb;
+    /* 기본 연한 회색 */
+    padding: 4px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-btn:hover {
+    color: #ff4d6d;
+    /* 핑크빛 하트 색상 */
+    transform: scale(1.1);
+}
+
+.heart-btn:focus {
+    outline: 2px solid #ff4d6d;
+    outline-offset: 2px;
+}
+
+.heart-btn.active {
+    color: #ff4d6d;
+    /* 클릭 후 활성화된 색상 */
+    transform: scale(1.1);
+}
+
+
+/* 제목과 전체글 그룹 */
+.title-group {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* 아래 정렬 */
+
+}
+
+/* 제목 크기 줄임 */
+.title-group h2 {
+    font-size: 16px;
+    /* 기존보다 작게 */
+    font-weight: 700;
+    color: #3a5f9e;
+    line-height: 1.2;
+}
+
+/* 전체글 글자 */
+.total-posts {
+    margin: 0px 0 0 0;
+    font-size: 8px;
+    color: rgb(168, 166, 166);
+    font-weight: 500;
+}

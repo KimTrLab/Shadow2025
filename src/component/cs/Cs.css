@@ -39,7 +39,7 @@ h1 {
 
 /* .image-item의 정확한 width를 지정하고, 전체 줄 배치도 고정 */
 .image-item-2 {
-    width: 500px;
+    width: 50%;
     min-width: 500px;
     /* 고정 유지  */
     box-sizing: border-box;
