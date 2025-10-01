@@ -2,7 +2,7 @@ body {
   margin: 0px auto;
   color: white;
   display: grid;
-  
+
 }
 
 header {
@@ -11,21 +11,23 @@ header {
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: center;  /* 가로 가운데 */
-  align-items: center;  /* 세로 가운데 */
+  justify-content: center;
+  /* 가로 가운데 */
+  align-items: center;
+  /* 세로 가운데 */
   position: fixed;
   top: 0;
   flex-wrap: wrap;
 }
 
-header:hover{
+header:hover {
   background-color: white;
   color: black;
   transition: all 0.5s;
 
 }
 
-header:hover ul li a{
+header:hover ul li a {
   color: black;
   transition: all 0.5s;
 
@@ -62,7 +64,7 @@ ul li {
   font-size: 18px;
   width: 120px;
   /* border: 1px solid white;*/
-  text-align: center;  
+  text-align: center;
 }
 
 
@@ -73,8 +75,51 @@ ul {
   text-align: center;
 }
 
-ul li a{
+ul li a {
   color: white;
   text-decoration: none;
 }
 
+/* modal css 시작 */
+/* SignUpModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #757272;
+  padding: 30px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color:black;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* modal css 끝 */
