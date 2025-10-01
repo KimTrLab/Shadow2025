@@ -13,15 +13,16 @@ function Header() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    console.log(e.target)
-    const { name, value } = e.target;
+    console.log(e.target)   //<input type="text" value="ㅁㅁ" name="name">
+    const { name, value, type } = e.target;
+    console.log(name, value, type)
     setForm(prev => ({ ...prev, [name]: value }));  // prev는 이전 함수 값을 가져와서 ...prev 얖은 복사를 하고 동적속성명[name]
     // prev가 이전 상태라고 해석하는 이유가 useState가 함수형 업데이트 특징이기 때문이다. 
     // 이전 상태를 가져와서 새로운 객체{...prev}에 저장하고 값을 갱신한다. 
     // 이전 객체의 변수값은 수정이 불가 .. react immutable 성격이므로 값이 변경되면 얕은 복사 후 값 추가하는 함수로 가능
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {  //await는 async 키워드 필요, 비동기를 만들어 주는 함수 
     e.preventDefault();
     // 간단한 유효성 검사
     if (!form.name || !form.email || !form.password) {
@@ -29,25 +30,53 @@ function Header() {
       return;
     }
 
-    try {
-      setLoading(true);    // 전송하는 동안 이름을 고치지 못하게 하려고 하는 듯.. 제거해도 괜찮음 
-      const response = await axios.post('http://localhost:8080/api/users/register', form, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    // try {
+    //   setLoading(true);    // 전송하는 동안 이름을 고치지 못하게 하려고 하는 듯.. 제거해도 괜찮음 
+    // awaitsms promise가 처리 될때까지 기다린다. async 함수에서만 사용가능
+    // axios.post() 서버에게 post요청, 응답이 올 때까지 promise를 반환인데 await를 붙히면 promise가 완료될때까지 실행을 멈추고 결과를 response에 할당
+    // 쉽게 말해 서버의 응답을 기다린다는 의미야.
+    // 만약 없다면  response는 promise객체 그 자체라서 서버에서 응답이 오기전에 바로 다음을 실행한다.
+    // Promise는 비동기 처리가 성공(fulfilled) 또는 실패(rejected) 등의 상태 정보를 갖게됩니다.
+    //   const response = await axios.post('http://localhost:8080/api/users/register', form, {
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   });
+
+    //   alert("회원가입 성공!");
+    //   console.log(response.data);
+
+    //   setIsOpen(false);
+    //   setForm({ name: '', email: '', password: '' });
+    // } catch (error) {
+    //   console.error("회원가입 실패:", error.response || error.message);
+    //   alert("회원가입 실패: " + (error.response?.data?.message || error.message));
+    // } finally {
+    //   setLoading(false);  
+    // }  
+
+    // promise 방식으로 위에 코를 수정 함
+    setLoading(true);
+    await axios.post('http://localhost:8080/api/users/register', form, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        alert("회원가입 성공!");
+        console.log(response.data);
+
+        setIsOpen(false);
+        setForm({ name: '', email: '', password: '' });
+      })
+      .catch(error => {
+        console.error("회원가입 실패:", error.response || error.message);
+        alert("회원가입 실패: " + (error.response?.data?.message || error.message));
+      }).finally(() => {
+        setLoading(false);
       });
 
-      alert("회원가입 성공!");
-      console.log(response.data);
 
-      setIsOpen(false);
-      setForm({ name: '', email: '', password: '' });
-    } catch (error) {
-      console.error("회원가입 실패:", error.response || error.message);
-      alert("회원가입 실패: " + (error.response?.data?.message || error.message));
-    } finally {
-      setLoading(false);  
-    }  
   };
 
   return (
@@ -74,7 +103,7 @@ function Header() {
 
         </div>
       </header>
-      {isOpen && (
+      {isOpen && (  // jsx에서 {}자바스크립트 표현식을 평가해서 그 결과를 랜더링에 넣겠다. isOpen이 true이면 랜더링 됨
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>회원가입</h2>
