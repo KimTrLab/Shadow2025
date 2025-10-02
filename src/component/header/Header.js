@@ -71,7 +71,10 @@ function Header() {
       })
       .catch(error => {
         console.error("회원가입 실패:", error.response || error.message);
-        alert("회원가입 실패: " + (error.response?.data?.message || error.message));
+        //alert("회원가입 실패: " + (error.response?.data?.message || error.message));
+        const respon = error.response.data;
+        console.log(respon)
+        alert("회원가입 실패: " + (respon.error || respon.password || respon.name));
       }).finally(() => {
         setLoading(false);
       });
