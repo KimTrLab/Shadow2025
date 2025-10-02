@@ -4,6 +4,7 @@ import Home from '../component/Home/Home';
 import CS from '../component/CS/Cs';
 import Lap from '../component/Lap/Lap';
 import BBS from '../component/bbs/BBS';
+import WriteForm from '../component/bbs/WriteForm';
 
 function MainRouter (){
   return (
@@ -13,6 +14,7 @@ function MainRouter (){
         <Route path='/cs' element={<CS />} />
         <Route path='/Lap' element={<Lap />} />
         <Route path='/bbs' element={<BBS />} />
+        <Route path='/bbs/wr' element={<WriteForm />} />
     </Routes>
     </BrowserRouter>
   )

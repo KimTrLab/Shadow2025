@@ -57,9 +57,9 @@ function Header() {
 
     // promise 방식으로 위에 코를 수정 함
     setLoading(true);
-    await axios.post('http://localhost:8080/api/users/register', form, {
+    await axios.post('http://localhost:8080/api/users/register', JSON.stringify(form), {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json; charset=UTF-8'        
       }
     })
       .then(response => {

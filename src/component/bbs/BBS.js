@@ -1,6 +1,20 @@
 import Header from '../header/Header'
+import React, { useState } from 'react';
 import './BBS.css';
+import Pagination from './Pagination';
+import { Link } from "react-router-dom";
+
 function BBS() {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 5;
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    // 실제 데이터 로딩 로직 호출 가능
+    console.log("현재 페이지:", page);
+  };
+
   return (
     <div>
       <Header />
@@ -13,6 +27,11 @@ function BBS() {
           </select>
           <input type="text" placeholder="검색어를 입력하세요" />
           <button>검색</button>
+        </div>
+
+        {/* 글쓰기 버튼 추가 */}
+        <div className="write-button-container">
+          <Link to="/bbs/wr" ><button className="write-button">글쓰기</button></Link>
         </div>
 
         <table>
@@ -53,6 +72,14 @@ function BBS() {
             </tr>
           </tbody>
         </table>
+        <div>
+          {/* 게시글 리스트 */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   );

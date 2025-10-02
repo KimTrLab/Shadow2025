@@ -77,3 +77,9 @@ button {
 .container td:nth-child(6) {
     width: 5%;
 }
+
+.write-button-container {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  margin: 10px 0;
+}
