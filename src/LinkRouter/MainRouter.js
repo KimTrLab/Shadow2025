@@ -4,7 +4,7 @@ import Home from '../component/Home/Home';
 import CS from '../component/cs/Cs';
 import Lap from '../component/Lap/Lap';
 import BBS from '../component/bbs/BBS';
-import WriteForm from '../component/bbs/WriteForm';
+import WriteForm from '../component/bbs/WriteForm_axio';
 
 function MainRouter (){
   return (
