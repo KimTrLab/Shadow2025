@@ -29,9 +29,17 @@ function WriteForm() {
         e.preventDefault();   // handleSubmit에서 e.preventDefault()로 페이지 리로드 방지
 
         const formData = new FormData();
-        formData.append("category", category);
-        formData.append("title", title);
-        formData.append("content", content);
+        // 일반 파라미터로 보내는 방식 시작  spring에서는  @ModelAttribute
+        // formData.append("category", category);
+        // formData.append("title", title);
+        // formData.append("content", content);
+        // 일반 파라미터로 보내는 방식 끝
+
+
+        //json으로 보내는 방식  시작   - 크롬 개발자 보드로 안 잡힘  spring에서는  @RequestPart("data") BBSDTO bbsDTO
+        const data = { "category": category, "title": title };
+        formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
+        //json 으로 보내는 방식 끝
 
         files.forEach((fileObj) => {
             if (fileObj.file) {
@@ -41,7 +49,7 @@ function WriteForm() {
 
         try {
             const response = await axios.post(
-                "http://your-server-api.com/submit", // 실제 서버 URL로 바꿔주세요
+                "http://localhost:8080/bbs/save", // 실제 서버 URL로 바꿔주세요
                 formData,
                 {
                     headers: {
