@@ -37,7 +37,7 @@ function WriteForm() {
 
 
         //json으로 보내는 방식  시작   - 크롬 개발자 보드로 안 잡힘  spring에서는  @RequestPart("data") BBSDTO bbsDTO
-        const data = { "category": category, "title": title };
+        const data = { "category": category, "title": title,"content":content,"userName":"kim",pass:"1234" };
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         //json 으로 보내는 방식 끝
 
