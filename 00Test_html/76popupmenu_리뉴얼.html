@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShadowCoding 메인화면</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 1280px;
+      background: #ffffff;
+      min-height: 100vh;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1f2937;
+      color: #fff;
+      height: 70px;
+      padding: 0 40px;
+    }
+
+    /* 제목 (ShadowCoding) */
+    .site-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #10b981;
+      text-shadow: 0 2px 10px rgba(16, 185, 129, 0.25);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .site-title:hover {
+      color: #34d399;
+      text-shadow: 0 3px 14px rgba(52, 211, 153, 0.4);
+      transform: scale(1.03);
+    }
+
+    /* 로그인 / 회원가입 버튼 */
+    .header-right button {
+      background-color: #10b981;
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      margin-left: 10px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-right button:hover {
+      background-color: #059669;
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      display: block;
+      padding: 16px 10px;
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #e0f2fe;
+      color: #0284c7;
+    }
+
+    /* Dropdown */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 48px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      min-width: 180px;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .dropdown-content a {
+      color: #374151;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f3f4f6;
+      color: #0284c7;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Main */
+    main {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    main h1 {
+      font-size: 36px;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+
+    main p {
+      color: #6b7280;
+      font-size: 18px;
+    }
+
+    /* Modal (Glass style) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.9);
+      width: 360px;
+      margin: 10% auto;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #1f2937;
+    }
+
+    .modal-content input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .modal-content button {
+      width: 95%;
+      margin-top: 14px;
+      background-color: #10b981;
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-content button:hover {
+      background-color: #059669;
+      transform: translateY(-1px);
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #9ca3af;
+    }
+
+    .close:hover {
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="site-title">ShadowCoding</div>
+      <div class="header-right">
+        <button id="loginBtn">로그인</button>
+        <button id="signupBtn">회원가입</button>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#">홈</a></li>
+        <li><a href="#">컴퓨터과학</a></li>
+        <li><a href="#">인공지능</a></li>
+        <li><a href="#">연구실</a></li>
+        <li class="dropdown">
+          <a href="#">이러닝 ▾</a>
+          <div class="dropdown-content">
+            <a href="#">프로그래밍언어</a>
+            <a href="#">인공지능</a>
+            <a href="#">네트워크</a>
+          </div>
+        </li>
+        <li><a href="#">자유게시판</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    <main>
+      <h1>DoitCoding 메인화면</h1>
+      <p>최신 트렌드 디자인으로 리뉴얼된 학습 사이트입니다.</p>
+    </main>
+  </div>
+
+  <!-- 로그인 모달 -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeLogin">&times;</span>
+      <h2>로그인</h2>
+      <input type="text" placeholder="아이디 입력" />
+      <input type="password" placeholder="비밀번호 입력" />
+      <button>로그인</button>
+    </div>
+  </div>
+
+  <!-- 회원가입 모달 -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeSignup">&times;</span>
+      <h2>회원가입</h2>
+      <input type="text" placeholder="아이디 입력" />
+      <input type="password" placeholder="비밀번호 입력" />
+      <input type="email" placeholder="이메일 입력" />
+      <button>회원가입</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginBtn = document.getElementById("loginBtn");
+      const signupBtn = document.getElementById("signupBtn");
+      const loginModal = document.getElementById("loginModal");
+      const signupModal = document.getElementById("signupModal");
+      const closeLogin = document.getElementById("closeLogin");
+      const closeSignup = document.getElementById("closeSignup");
+
+      loginBtn.onclick = () => (loginModal.style.display = "block");
+      signupBtn.onclick = () => (signupModal.style.display = "block");
+      closeLogin.onclick = () => (loginModal.style.display = "none");
+      closeSignup.onclick = () => (signupModal.style.display = "none");
+
+      window.onclick = (e) => {
+        if (e.target === loginModal) loginModal.style.display = "none";
+        if (e.target === signupModal) signupModal.style.display = "none";
+      };
+    });
+  </script>
+</body>
+</html>

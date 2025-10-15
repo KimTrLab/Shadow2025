@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인화면</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 1280px;
+      background-color: #fff;
+      min-height: 100vh;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    /* 상단 header */
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #f8f8f8;
+      height: 60px;
+      padding: 0 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header button {
+      background-color: #007bff;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      margin-left: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+
+    header button:hover {
+      background-color: #0056b3;
+    }
+
+    /* nav 메뉴 */
+    nav {
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      border-bottom: 2px solid #0056b3;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      display: block;
+      padding: 14px 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #0056b3;
+    }
+
+    /* 드롭다운 */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f2f2f2;
+    }
+
+    /* 이러닝 hover 시 표시 */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    main h1 {
+      font-size: 32px;
+      color: #333;
+    }
+
+    /* 모달 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      width: 350px;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .modal-content input {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .modal-content button {
+      width: 95%;
+      margin-top: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 상단 -->
+    <header>
+      <button id="loginBtn">로그인</button>
+      <button id="signupBtn">회원가입</button>
+    </header>
+
+    <!-- 네비게이션 -->
+    <nav>
+      <ul>
+        <li><a href="#">홈</a></li>
+        <li><a href="#">컴퓨터과학</a></li>
+        <li><a href="#">인공지능</a></li>
+        <li><a href="#">연구실</a></li>
+        <li class="dropdown">
+          <a href="#">이러닝 ▼</a>
+          <div class="dropdown-content">
+            <a href="#">프로그래밍언어</a>
+            <a href="#">인공지능</a>
+            <a href="#">네트워크</a>
+          </div>
+        </li>
+        <li><a href="#">자유게시판</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>메인화면입니다</h1>
+      <p>이곳에 사이트의 주요 내용을 배치하세요.</p>
+    </main>
+  </div>
+
+  <!-- 로그인 모달 -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeLogin">&times;</span>
+      <h2>로그인</h2>
+      <input type="text" placeholder="아이디 입력"><br>
+      <input type="password" placeholder="비밀번호 입력"><br>
+      <button>로그인</button>
+    </div>
+  </div>
+
+  <!-- 회원가입 모달 -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeSignup">&times;</span>
+      <h2>회원가입</h2>
+      <input type="text" placeholder="아이디 입력"><br>
+      <input type="password" placeholder="비밀번호 입력"><br>
+      <input type="email" placeholder="이메일 입력"><br>
+      <button>회원가입</button>
+    </div>
+  </div>
+
+  <!-- 스크립트 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginBtn = document.getElementById('loginBtn');
+      const signupBtn = document.getElementById('signupBtn');
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      const closeLogin = document.getElementById('closeLogin');
+      const closeSignup = document.getElementById('closeSignup');
+
+      loginBtn.onclick = () => loginModal.style.display = 'block';
+      signupBtn.onclick = () => signupModal.style.display = 'block';
+      closeLogin.onclick = () => loginModal.style.display = 'none';
+      closeSignup.onclick = () => signupModal.style.display = 'none';
+
+      window.onclick = (e) => {
+        if (e.target === loginModal) loginModal.style.display = 'none';
+        if (e.target === signupModal) signupModal.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
+</html>
