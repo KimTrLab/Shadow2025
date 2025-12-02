@@ -1,0 +1,59 @@
+환경 정리
+
+React 앱: localhost:3000
+
+API 서버(Spring Security): localhost:8080
+
+클라이언트(브라우저)가 접근하는 엔드포인트: React 앱
+
+질문: “클라이언트가 인식하는 origin은 어디인가?”
+
+2️⃣ 요청 흐름
+
+브라우저가 React 앱 접근
+
+브라우저 주소창: http://localhost:3000/login
+
+React 앱(HTML + JS) 다운로드 → 브라우저가 렌더링
+
+✅ 이때 브라우저 입장에서는 origin = http://localhost:3000
+
+사용자가 로그인 폼 입력 후 제출
+
+로그인 버튼 클릭 → React JS 코드에서 API 서버로 POST 요청
+
+예:
+
+axios.post("http://localhost:8080/login", { username, password }, { withCredentials: true });
+
+3️⃣ CORS와 origin
+
+브라우저가 http://localhost:3000에서 http://localhost:8080으로 요청을 보냄
+
+이때 브라우저가 인식하는 요청 origin은 React 앱 origin
+
+즉 Origin: http://localhost:3000 헤더가 자동으로 붙음
+
+서버는 이 Origin을 보고 CORS 정책을 적용
+
+허용 origin이 맞으면 응답 가능
+
+쿠키 전송을 허용하려면 Access-Control-Allow-Credentials: true 필요
+
+4️⃣ 세션/쿠키 발급 관점
+
+로그인 성공 시 API 서버가 발급한 Set-Cookie(세션 ID)
+
+브라우저가 withCredentials: true 옵션 없으면 Cross-Origin 쿠키를 저장하지 않음
+
+브라우저가 저장 후 다시 API 요청할 때 쿠키 자동 포함
+
+5️⃣ 결론
+
+브라우저가 인식하는 origin = React 앱(localhost:3000)
+
+API 서버(localhost:8080)는 Cross-Origin 요청으로 처리
+
+따라서 React는 단순히 프론트엔드 역할, origin이 API 서버와 다름에도 브라우저가 요청 헤더에 Origin을 붙여 전송
+
+세션 발급은 API 서버에서만 가능

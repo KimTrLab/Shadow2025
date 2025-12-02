@@ -12,7 +12,7 @@ function InitData() {
 
     useEffect(() => {
         dispatch(mainActions.clear());
-        axios.get('http://localhost:8080/aa')
+        axios.get('http://192.168.1.2:8080/aa')
             .then(response => {
                 //   setData(response.data); // 서버에서 받은 데이터를 상태에 저장
                 const data = response.data;
